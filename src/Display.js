@@ -2,10 +2,12 @@ import { useContext } from "react"
 import { DisplayContext } from "./App"
 
 function Display(props){
-    const [sound] = useContext(DisplayContext)
+    const [key] = useContext(DisplayContext)
+    const sound = props.sounds.find((sound)=> sound.key === key);
+    
 
     return <div id="display">
-        {sound}
+        {sound? sound.name : ""}
     </div>
 }
 

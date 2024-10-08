@@ -1,17 +1,51 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { DisplayContext } from "./App"
+
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 
 function DrumPad(props){
 
-    const [sound, setSound] = useContext(DisplayContext);
+  useEffect(()=>{
+    window.addEventListener("keydown", handleKeyPress)
+  },[])
 
+    const [key, setKey] = useContext(DisplayContext);
+    
     function handleClick(e){
-        setSound(e.target.innerText)
+        setKey(e.target.innerText.toLowerCase())
+        playSound(e.target.innerText.toLowerCase())
     }
+    
+    function handleKeyPress(e){
+      switch(e.key){
+        case "q":
+        case "w":
+        case "e":
+        case "a":
+        case "s":
+        case "d":
+        case "z":
+        case "x":
+        case "c":    
+          setKey(e.key)
+          playSound(e.key)
+          break;
+        default:
+          break;
+      }
+    }
+  
+    
 
+    function playSound(soundKey){
+      const sound = props.sounds.find((sound)=> sound.key === soundKey);
+      const audio = new Audio(sound.url);
+      audio.play()
+
+    }
+  
     return (
     <div className="drum-pad">
         <Row xs={3}>
