@@ -1,8 +1,13 @@
+import "./custom.scss"
+import DrumPad from "./DrumPad"
+import Container from "react-bootstrap/Container"
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Container>
+      <DrumPad />
+      <div id="display"></div>
+    </Container>
   );
 }
 
