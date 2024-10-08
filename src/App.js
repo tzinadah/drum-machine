@@ -1,12 +1,13 @@
 import "./custom.scss"
 import DrumPad from "./DrumPad"
+import Display from "./Display"
 import Container from "react-bootstrap/Container"
 
 function App() {
   return (
-    <Container>
+    <Container className="bg-light">
       <DrumPad />
-      <div id="display"></div>
+      <Display />
     </Container>
   );
 }

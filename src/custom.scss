@@ -11,6 +11,6 @@ $theme-colors: (
     "danger":     #f91900,
 );
 
-$body-bg: #3974ef;
+$body-bg: $white;
 
 @import "~bootstrap/scss/bootstrap.scss";
